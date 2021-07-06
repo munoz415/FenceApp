@@ -24,7 +24,7 @@ const WelcomeScreen = ({navigation}) => {
         <View
           style={{alignSelf: 'stretch', alignItems: 'center', marginTop: 16}}>
           <Text style={styles.title}>Total Fence</Text>
-          <Text style={{marginTop: 16, fontFamily: 'serif'}}>
+          <Text style={{marginTop: 16}}>
             Select an Option
           </Text>
           <TouchableOpacity style={styles.button} onPress={buttonPressed}>
@@ -67,7 +67,6 @@ const styles = StyleSheet.create({
   title: {
     color: '#cfab1f',
     fontSize: 30,
-    fontFamily: 'serif',
   },
   button: {
     alignSelf: 'flex-start',
@@ -79,7 +78,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   buttonText: {
-    fontFamily: 'serif',
     marginVertical: 8,
   },
 });

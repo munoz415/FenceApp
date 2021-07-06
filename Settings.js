@@ -20,7 +20,7 @@ const SettingsScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={{alignSelf: 'stretch', alignItems: 'center', marginTop: 16}}>
-        <Text style={{fontFamily: 'serif', fontSize: 18}}>
+        <Text style={{fontSize: 18}}>
           Select Materials
         </Text>
         <Picker
@@ -34,19 +34,24 @@ const SettingsScreen = () => {
             <Picker.Item label={item} value={item} key={item} />
           ))}
         </Picker>
-        <View style={{alignSelf: "stretch", alignItems: "center", flexDirection: "row", marginHorizontal: 16}}>
+        <View
+          style={{
+            alignSelf: 'stretch',
+            alignItems: 'center',
+            flexDirection: 'row',
+            marginHorizontal: 16,
+          }}>
           <Text
             style={{
-              fontFamily: 'serif',
               fontSize: 18,
               marginRight: 16,
             }}>
             Price
           </Text>
           <TextInput
-            style={{backgroundColor: "#fff"}}
+            style={{backgroundColor: '#fff'}}
             value={lumberItemPrice}
-            placeholder={"Lumber Item Price"}
+            placeholder={'Lumber Item Price'}
             onChangeText={onChangeLumberItemPrice}
           />
         </View>
