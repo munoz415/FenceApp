@@ -9,8 +9,8 @@
 import React from 'react';
 import WelcomeScreen from './WelcomeScreen';
 import SettingsScreen from './Settings';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 import {
   SafeAreaView,
   ScrollView,
@@ -52,9 +52,9 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   container: {
-    backgroundColor: '#5a5b5e', 
-    flex: 1, 
-  }
+    backgroundColor: '#5a5b5e',
+    flex: 1,
+  },
 });
 
 export default App;

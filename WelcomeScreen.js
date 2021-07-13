@@ -24,9 +24,7 @@ const WelcomeScreen = ({navigation}) => {
         <View
           style={{alignSelf: 'stretch', alignItems: 'center', marginTop: 16}}>
           <Text style={styles.title}>Total Fence</Text>
-          <Text style={{marginTop: 16}}>
-            Select an Option
-          </Text>
+          <Text style={{marginTop: 16}}>Select an Option</Text>
           <TouchableOpacity style={styles.button} onPress={buttonPressed}>
             <View>
               <Text style={styles.buttonText}>Get a Quote</Text>
