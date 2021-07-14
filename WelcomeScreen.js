@@ -12,27 +12,32 @@ import {
 
 const WelcomeScreen = ({navigation}) => {
   const isDarkMode = useColorScheme() === 'dark';
-  const buttonPressed = () => {
+  const settingsButtonPressed = () => {
     console.log('Pressed');
     navigation.navigate('Settings');
+  };
+  const quoteButtonPressed = () => {
+    console.log('Pressed');
+    navigation.navigate('Quote');
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <ScrollView contentInsetAdjustmentBehavior="automatic">
-        <View
-          style={{alignSelf: 'stretch', alignItems: 'center', marginTop: 16}}>
+        <View style={styles.welcomeScreen}>
           <Text style={styles.title}>Total Fence</Text>
           <Text style={{marginTop: 16}}>Select an Option</Text>
-          <TouchableOpacity style={styles.button} onPress={buttonPressed}>
+          <TouchableOpacity style={styles.button} onPress={quoteButtonPressed}>
             <View>
               <Text style={styles.buttonText}>Get a Quote</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={buttonPressed}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={settingsButtonPressed}>
             <View>
-              <Text style={styles.buttonText}>View Past Quotes</Text>
+              <Text style={styles.buttonText}>Settings</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -42,6 +47,11 @@ const WelcomeScreen = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
+  welcomeScreen: {
+    alignSelf: 'stretch',
+    alignItems: 'center',
+    marginTop: 16,
+  },
   sectionContainer: {
     marginTop: 32,
     paddingHorizontal: 24,

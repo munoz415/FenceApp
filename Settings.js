@@ -9,19 +9,34 @@ import {
   useColorScheme,
   TouchableOpacity,
   TextInput,
-  Button,
 } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const lumberItems = ['2X4', '4X4', '4X8'];
-const steelItems = ['8 in. post'];
+const lumberItems = [
+  'Choice Stud (2X4X8)',
+  'Treated Post (4X4X8)',
+  'Cedar Picket 6" (5X6X6)',
+  'Cedar Picket 6" (8X6X6)',
+  'Cedar Picket 4" (5X6X6)',
+  'Cedar Picket 4" (8X6X6)',
+  'Cedar Picket 6"X8 in. Flat Top',
+];
+const otherItems = [
+  'Quickrete Fastening',
+  'Quickrete Hard Strength',
+  'Galvanized 1.5" Nails',
+  'Gate Hardware Kit',
+  '8 in. Metal Post',
+];
+const laborItems = ['New Post Labor', 'Replacemant Post Labor'];
 
 const SettingsScreen = () => {
   const [selectedLumberItem, setSelectedLumberItem] = useState(0);
   const [lumberItemPrice, onChangeLumberItemPrice] = useState('');
-  const [selectedSteelItem, setSelectedSteelItem] = useState(0);
-  const [steelItemPrice, onChangeSteelItemPrice] = useState('');
+  const [selectedOtherItem, setSelectedOtherItem] = useState(0);
+  const [otherItemPrice, onChangeOtherItemPrice] = useState('');
+  const [selectedLaborItem, setSelectedLaborItem] = useState(0);
   const [laborPrice, onChangeLaborItemPrice] = useState('');
   const save = async () => {
     const itemName = lumberItems[selectedLumberItem];
@@ -38,78 +53,92 @@ const SettingsScreen = () => {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <View style={{alignSelf: 'stretch', alignItems: 'center', marginTop: 16}}>
-        <Text style={{fontSize: 18}}>Select Materials</Text>
-        <Text style={{fontSize: 18, marginTop: 16}}>Lumber</Text>
-        <Picker
-          style={{alignSelf: 'stretch'}}
-          selectedValue={selectedLumberItem}
-          onValueChange={(itemValue, itemIndex) => {
-            setSelectedLumberItem(itemValue);
-            console.log(itemValue);
-          }}>
-          {lumberItems.map(item => (
-            <Picker.Item label={item} value={item} key={item} />
-          ))}
-        </Picker>
-        <View style={styles.priceArea}>
-          <Text style={styles.priceChars}>Price</Text>
-          <TextInput
-            style={{backgroundColor: '#fff'}}
-            value={lumberItemPrice}
-            placeholder={'Lumber Item Price'}
-            onChangeText={onChangeLumberItemPrice}
-          />
-          <TouchableOpacity style={styles.button} onPress={save}>
-            <View>
-              <Text style={styles.buttonText}>Set Price</Text>
-            </View>
-          </TouchableOpacity>
+      <ScrollView contentInsetAdjustmentBehavior="automatic">
+        <View
+          style={{alignSelf: 'stretch', alignItems: 'center', marginTop: 16}}>
+          <Text style={{fontSize: 18}}>Select Materials</Text>
+          <Text style={{fontSize: 18, marginTop: 16}}>Lumber</Text>
+          <Picker
+            style={{alignSelf: 'stretch'}}
+            selectedValue={selectedLumberItem}
+            onValueChange={(itemValue, itemIndex) => {
+              setSelectedLumberItem(itemValue);
+              console.log(itemValue);
+            }}>
+            {lumberItems.map(item => (
+              <Picker.Item label={item} value={item} key={item} />
+            ))}
+          </Picker>
+          <View style={styles.priceArea}>
+            <Text style={styles.priceChars}>Price</Text>
+            <TextInput
+              style={{backgroundColor: '#fff'}}
+              value={lumberItemPrice}
+              placeholder={'Lumber Item Price'}
+              onChangeText={onChangeLumberItemPrice}
+            />
+            <TouchableOpacity style={styles.button} onPress={save}>
+              <View>
+                <Text style={styles.buttonText}>Set Price</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+          <Text style={{fontSize: 18, marginTop: 20}}>Other</Text>
+          <Picker
+            style={{alignSelf: 'stretch'}}
+            selectedValue={selectedOtherItem}
+            onValueChange={(itemValue, itemIndex) => {
+              setSelectedOtherItem(itemValue);
+              console.log(itemValue);
+            }}>
+            {otherItems.map(item => (
+              <Picker.Item label={item} value={item} key={item} />
+            ))}
+          </Picker>
+          <View style={styles.priceArea}>
+            <Text style={styles.priceChars}>Price</Text>
+            <TextInput
+              style={{backgroundColor: '#fff'}}
+              value={otherItemPrice}
+              placeholder={'Other Item Price'}
+              onChangeText={onChangeOtherItemPrice}
+            />
+            <TouchableOpacity style={styles.button} onPress={save}>
+              <View>
+                <Text style={styles.buttonText}>Set Price</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+          <Text style={{fontSize: 18, marginTop: 20, marginBottom: 16}}>
+            Labor
+          </Text>
+          <Picker
+            style={{alignSelf: 'stretch'}}
+            selectedValue={selectedLaborItem}
+            onValueChange={(itemValue, itemIndex) => {
+              setSelectedLaborItem(itemValue);
+              console.log(itemValue);
+            }}>
+            {laborItems.map(item => (
+              <Picker.Item label={item} value={item} key={item} />
+            ))}
+          </Picker>
+          <View style={styles.priceArea}>
+            <Text style={styles.priceChars}>Price</Text>
+            <TextInput
+              style={{backgroundColor: '#fff'}}
+              value={laborPrice}
+              placeholder={'Labor Price'}
+              onChangeText={onChangeLaborItemPrice}
+            />
+            <TouchableOpacity style={styles.button} onPress={save}>
+              <View>
+                <Text style={styles.buttonText}>Set Price</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
         </View>
-        <Text style={{fontSize: 18, marginTop: 20}}>Steel/Hardware</Text>
-        <Picker
-          style={{alignSelf: 'stretch'}}
-          selectedValue={selectedSteelItem}
-          onValueChange={(itemValue, itemIndex) => {
-            setSelectedSteelItem(itemValue);
-            console.log(itemValue);
-          }}>
-          {steelItems.map(item => (
-            <Picker.Item label={item} value={item} key={item} />
-          ))}
-        </Picker>
-        <View style={styles.priceArea}>
-          <Text style={styles.priceChars}>Price</Text>
-          <TextInput
-            style={{backgroundColor: '#fff'}}
-            value={steelItemPrice}
-            placeholder={'Steel/Hardware Item Price'}
-            onChangeText={onChangeSteelItemPrice}
-          />
-          <TouchableOpacity style={styles.button}>
-            <View>
-              <Text style={styles.buttonText}>Set Price</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-        <Text style={{fontSize: 18, marginTop: 20, marginBottom: 16}}>
-          Labor
-        </Text>
-        <View style={styles.priceArea}>
-          <Text style={styles.priceChars}>Price</Text>
-          <TextInput
-            style={{backgroundColor: '#fff'}}
-            value={laborPrice}
-            placeholder={'Labor Price'}
-            onChangeText={onChangeLaborItemPrice}
-          />
-          <TouchableOpacity style={styles.button}>
-            <View>
-              <Text style={styles.buttonText}>Set Price</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };

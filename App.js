@@ -9,6 +9,7 @@
 import React from 'react';
 import WelcomeScreen from './WelcomeScreen';
 import SettingsScreen from './Settings';
+import QuoteScreen from './Quote';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {
@@ -29,6 +30,7 @@ const App = () => {
       <Stack.Navigator>
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="Settings" component={SettingsScreen} />
+        <Stack.Screen name="Quote" component={QuoteScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
