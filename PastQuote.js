@@ -10,13 +10,13 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-const QuoteScreen = () => {
+const PastQuoteScreen = () => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <ScrollView contentInsetAdjustmentBehavior="automatic">
-        <Text>Test Quote</Text>
+        <Text>Test Past Quote</Text>
       </ScrollView>
     </SafeAreaView>
   );
@@ -33,4 +33,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default QuoteScreen;
+export default PastQuoteScreen;

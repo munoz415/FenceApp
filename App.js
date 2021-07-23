@@ -10,6 +10,7 @@ import React from 'react';
 import WelcomeScreen from './WelcomeScreen';
 import SettingsScreen from './Settings';
 import QuoteScreen from './Quote';
+import PastQuoteScreen from './PastQuote';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {
@@ -31,6 +32,7 @@ const App = () => {
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="Settings" component={SettingsScreen} />
         <Stack.Screen name="Quote" component={QuoteScreen} />
+        <Stack.Screen name="PastQuote" component={PastQuoteScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

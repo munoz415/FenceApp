@@ -1,4 +1,5 @@
 import React from 'react';
+import Icon from 'react-native-vector-icons/AntDesign';
 import {
   View,
   StyleSheet,
@@ -20,6 +21,10 @@ const WelcomeScreen = ({navigation}) => {
     console.log('Pressed');
     navigation.navigate('Quote');
   };
+  const pastButtonPressed = () => {
+    console.log('Pressed');
+    navigation.navigate('PastQuote');
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -31,6 +36,11 @@ const WelcomeScreen = ({navigation}) => {
           <TouchableOpacity style={styles.button} onPress={quoteButtonPressed}>
             <View>
               <Text style={styles.buttonText}>Get a Quote</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={pastButtonPressed}>
+            <View>
+              <Text style={styles.buttonText}>View Past Quote</Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity
