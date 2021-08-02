@@ -1,5 +1,4 @@
 import React from 'react';
-import Icon from 'react-native-vector-icons/AntDesign';
 import {
   View,
   StyleSheet,
@@ -10,6 +9,7 @@ import {
   useColorScheme,
   TouchableOpacity,
 } from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
 
 const WelcomeScreen = ({navigation}) => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -41,13 +41,6 @@ const WelcomeScreen = ({navigation}) => {
           <TouchableOpacity style={styles.button} onPress={pastButtonPressed}>
             <View>
               <Text style={styles.buttonText}>View Past Quote</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={settingsButtonPressed}>
-            <View>
-              <Text style={styles.buttonText}>Settings</Text>
             </View>
           </TouchableOpacity>
         </View>

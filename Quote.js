@@ -16,7 +16,11 @@ const QuoteScreen = () => {
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <ScrollView contentInsetAdjustmentBehavior="automatic">
-        <Text>Test Quote</Text>
+        <View
+          style={{alignSelf: 'stretch', alignItems: 'center', marginTop: 16}}>
+          <Text style={{fontSize: 18}}>Select Attributes</Text>
+          <Text style={{fontSize: 16, marginTop: 16}}>Side Lengths</Text>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );

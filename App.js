@@ -21,6 +21,8 @@ import {
   Text,
   useColorScheme,
   View,
+  TouchableOpacity,
+  Image,
 } from 'react-native';
 
 const Stack = createStackNavigator();
@@ -29,7 +31,22 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Welcome" component={WelcomeScreen} />
+        <Stack.Screen
+          name="Welcome"
+          component={WelcomeScreen}
+          options={({navigation}) => ({
+            headerRight: () => (
+              <TouchableOpacity
+                onPress={() => navigation.navigate('Settings')}
+                color="#fff">
+                <Image
+                  source={require('./assets/settingsgear.png')}
+                  style={{height: 22, width: 22, marginRight: 16}}
+                />
+              </TouchableOpacity>
+            ),
+          })}
+        />
         <Stack.Screen name="Settings" component={SettingsScreen} />
         <Stack.Screen name="Quote" component={QuoteScreen} />
         <Stack.Screen name="PastQuote" component={PastQuoteScreen} />

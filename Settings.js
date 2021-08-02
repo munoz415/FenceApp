@@ -32,18 +32,17 @@ const otherItems = [
 const laborItems = ['New Post Labor', 'Replacemant Post Labor'];
 
 const SettingsScreen = () => {
-  const [selectedLumberItem, setSelectedLumberItem] = useState(0);
+  const [selectedLumberItem, setSelectedLumberItem] = useState(lumberItems[0]);
   const [lumberItemPrice, onChangeLumberItemPrice] = useState('');
-  const [selectedOtherItem, setSelectedOtherItem] = useState(0);
+  const [selectedOtherItem, setSelectedOtherItem] = useState(otherItems[0]);
   const [otherItemPrice, onChangeOtherItemPrice] = useState('');
-  const [selectedLaborItem, setSelectedLaborItem] = useState(0);
+  const [selectedLaborItem, setSelectedLaborItem] = useState(laborItems[0]);
   const [laborPrice, onChangeLaborItemPrice] = useState('');
-  const save = async () => {
-    const itemName = lumberItems[selectedLumberItem];
+  const save = async (item, price) => {
     try {
-      await AsyncStorage.setItem(itemName, lumberItemPrice, async () => {
+      await AsyncStorage.setItem(item, price, async () => {
         try {
-          const value = await AsyncStorage.getItem(itemName);
+          const value = await AsyncStorage.getItem(item);
           console.log(value);
         } catch (e) {}
       });
@@ -61,9 +60,8 @@ const SettingsScreen = () => {
           <Picker
             style={{alignSelf: 'stretch'}}
             selectedValue={selectedLumberItem}
-            onValueChange={(itemValue, itemIndex) => {
-              setSelectedLumberItem(itemValue);
-              console.log(itemValue);
+            onValueChange={item => {
+              setSelectedLumberItem(item);
             }}>
             {lumberItems.map(item => (
               <Picker.Item label={item} value={item} key={item} />
@@ -77,7 +75,9 @@ const SettingsScreen = () => {
               placeholder={'Lumber Item Price'}
               onChangeText={onChangeLumberItemPrice}
             />
-            <TouchableOpacity style={styles.button} onPress={save}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => save('lumberItemPrice', lumberItemPrice)}>
               <View>
                 <Text style={styles.buttonText}>Set Price</Text>
               </View>
@@ -87,9 +87,8 @@ const SettingsScreen = () => {
           <Picker
             style={{alignSelf: 'stretch'}}
             selectedValue={selectedOtherItem}
-            onValueChange={(itemValue, itemIndex) => {
-              setSelectedOtherItem(itemValue);
-              console.log(itemValue);
+            onValueChange={item => {
+              setSelectedOtherItem(item);
             }}>
             {otherItems.map(item => (
               <Picker.Item label={item} value={item} key={item} />
@@ -103,7 +102,9 @@ const SettingsScreen = () => {
               placeholder={'Other Item Price'}
               onChangeText={onChangeOtherItemPrice}
             />
-            <TouchableOpacity style={styles.button} onPress={save}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => save('otherItemPrice', otherItemPrice)}>
               <View>
                 <Text style={styles.buttonText}>Set Price</Text>
               </View>
@@ -115,9 +116,8 @@ const SettingsScreen = () => {
           <Picker
             style={{alignSelf: 'stretch'}}
             selectedValue={selectedLaborItem}
-            onValueChange={(itemValue, itemIndex) => {
-              setSelectedLaborItem(itemValue);
-              console.log(itemValue);
+            onValueChange={item => {
+              setSelectedLaborItem(item);
             }}>
             {laborItems.map(item => (
               <Picker.Item label={item} value={item} key={item} />
@@ -131,7 +131,9 @@ const SettingsScreen = () => {
               placeholder={'Labor Price'}
               onChangeText={onChangeLaborItemPrice}
             />
-            <TouchableOpacity style={styles.button} onPress={save}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => save('laborItemPrice', laborPrice)}>
               <View>
                 <Text style={styles.buttonText}>Set Price</Text>
               </View>
