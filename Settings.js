@@ -68,9 +68,9 @@ const SettingsScreen = () => {
             ))}
           </Picker>
           <View style={styles.priceArea}>
-            <Text style={styles.priceChars}>Price</Text>
+            <Text style={styles.priceChars}>Price:</Text>
             <TextInput
-              style={{backgroundColor: '#fff'}}
+              style={styles.textInput}
               value={lumberItemPrice}
               placeholder={'Lumber Item Price'}
               onChangeText={onChangeLumberItemPrice}
@@ -95,9 +95,9 @@ const SettingsScreen = () => {
             ))}
           </Picker>
           <View style={styles.priceArea}>
-            <Text style={styles.priceChars}>Price</Text>
+            <Text style={styles.priceChars}>Price:</Text>
             <TextInput
-              style={{backgroundColor: '#fff'}}
+              style={styles.textInput}
               value={otherItemPrice}
               placeholder={'Other Item Price'}
               onChangeText={onChangeOtherItemPrice}
@@ -124,9 +124,9 @@ const SettingsScreen = () => {
             ))}
           </Picker>
           <View style={styles.priceArea}>
-            <Text style={styles.priceChars}>Price</Text>
+            <Text style={styles.priceChars}>Price:</Text>
             <TextInput
-              style={{backgroundColor: '#fff'}}
+              style={styles.textInput}
               value={laborPrice}
               placeholder={'Labor Price'}
               onChangeText={onChangeLaborItemPrice}
@@ -167,6 +167,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#000',
     borderRadius: 10,
+  },
+  textInput: {
+    backgroundColor: '#fff',
+    paddingHorizontal: 4,
+    paddingVertical: 0.8,
   },
 });
 
