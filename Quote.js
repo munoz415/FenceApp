@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import DropDownPicker from 'react-native-dropdown-picker';
 
 const fenceSides = ['Left', 'Back', 'Right', 'Front Right', 'Front Left'];
 const numOfGates = ['1 Gate', '2 Gates', '3 Gates'];
@@ -22,19 +23,26 @@ const lumberType = ['Cedar', 'Pine'];
 const postType = ['Wood', 'Steel'];
 
 const QuoteScreen = () => {
+  const [openFenceSides, setOpenFenceSides] = useState(false);
   const [selectedFenceSide, setSelectedFenceSide] = useState(fenceSides[0]);
   const [fenceSideLength, onChangeFenceSideLength] = useState('');
+  const [openGateNums, setOpenGateNums] = useState(false);
   const [selectedGateNum, setSelectedGateNum] = useState(numOfGates[0]);
+  const [openStringerNums, setOpenStringerNums] = useState(false);
   const [selectedStringerNums, setSelectedStringerNums] = useState(
     numOfStringers[0],
   );
+  const [openFenceHeight, setOpenFenceHeight] = useState(false);
   const [selectedFenceHeight, setSelectedFenceHeight] = useState(
     fenceHeight[0],
   );
+  const [openPicketWidth, setOpenPicketWidth] = useState(false);
   const [selectedPicketWidth, setSelectedPicketWidth] = useState(
     picketWidth[0],
   );
+  const [openLumberType, setOpenLumberType] = useState(false);
   const [selectedLumberType, setSelectedLumberType] = useState(lumberType[0]);
+  const [openPostType, setOpenPostType] = useState(false);
   const [selectedPostType, setSelectedPostType] = useState(postType[0]);
   const save = async (item, price) => {
     try {
@@ -57,16 +65,14 @@ const QuoteScreen = () => {
           style={{alignSelf: 'stretch', alignItems: 'center', marginTop: 16}}>
           <Text style={{fontSize: 18}}>Select Attributes</Text>
           <Text style={{fontSize: 18, marginTop: 16}}>Side Lengths</Text>
-          <Picker
-            style={{alignSelf: 'stretch'}}
-            selectedValue={selectedFenceSide}
-            onValueChange={item => {
-              setSelectedFenceSide(item);
-            }}>
-            {fenceSides.map(item => (
-              <Picker.Item label={item} value={item} key={item} />
-            ))}
-          </Picker>
+          <DropDownPicker
+            style={{marginVertical: 32}}
+            open={openFenceSides}
+            value={selectedFenceSide}
+            items={fenceSides.map(item => ({label: item, value: item}))}
+            setOpen={setOpenFenceSides}
+            setValue={setSelectedFenceSide}
+          />
           <View style={styles.priceArea}>
             <Text style={styles.priceChars}>Length:</Text>
             <TextInput
@@ -85,16 +91,14 @@ const QuoteScreen = () => {
             </TouchableOpacity>
           </View>
           <Text style={{fontSize: 18, marginTop: 16}}>Number of Gates</Text>
-          <Picker
-            style={{alignSelf: 'stretch'}}
-            selectedValue={selectedGateNum}
-            onValueChange={item => {
-              setSelectedGateNum(item);
-            }}>
-            {numOfGates.map(item => (
-              <Picker.Item label={item} value={item} key={item} />
-            ))}
-          </Picker>
+          <DropDownPicker
+            style={{marginVertical: 32}}
+            open={openGateNums}
+            value={selectedGateNum}
+            items={numOfGates.map(item => ({label: item, value: item}))}
+            setOpen={setOpenGateNums}
+            setValue={setSelectedGateNum}
+          />
           <View style={styles.priceArea}>
             <Text style={styles.priceChars}>Gates:</Text>
             <TouchableOpacity
@@ -106,16 +110,14 @@ const QuoteScreen = () => {
             </TouchableOpacity>
           </View>
           <Text style={{fontSize: 18, marginTop: 16}}>Number of Stringers</Text>
-          <Picker
-            style={{alignSelf: 'stretch'}}
-            selectedValue={selectedStringerNums}
-            onValueChange={item => {
-              setSelectedStringerNums(item);
-            }}>
-            {numOfStringers.map(item => (
-              <Picker.Item label={item} value={item} key={item} />
-            ))}
-          </Picker>
+          <DropDownPicker
+            style={{marginVertical: 32}}
+            open={openStringerNums}
+            value={selectedStringerNums}
+            items={numOfStringers.map(item => ({label: item, value: item}))}
+            setOpen={setOpenStringerNums}
+            setValue={setSelectedStringerNums}
+          />
           <View style={styles.priceArea}>
             <Text style={styles.priceChars}>Stringers:</Text>
             <TouchableOpacity
@@ -129,16 +131,14 @@ const QuoteScreen = () => {
             </TouchableOpacity>
           </View>
           <Text style={{fontSize: 18, marginTop: 16}}>Fence Height</Text>
-          <Picker
-            style={{alignSelf: 'stretch'}}
-            selectedValue={selectedFenceHeight}
-            onValueChange={item => {
-              setSelectedFenceHeight(item);
-            }}>
-            {fenceHeight.map(item => (
-              <Picker.Item label={item} value={item} key={item} />
-            ))}
-          </Picker>
+          <DropDownPicker
+            style={{marginVertical: 32}}
+            open={openFenceHeight}
+            value={selectedFenceHeight}
+            items={fenceHeight.map(item => ({label: item, value: item}))}
+            setOpen={setOpenFenceHeight}
+            setValue={setSelectedFenceHeight}
+          />
           <View style={styles.priceArea}>
             <Text style={styles.priceChars}>Height:</Text>
             <TouchableOpacity
@@ -150,16 +150,14 @@ const QuoteScreen = () => {
             </TouchableOpacity>
           </View>
           <Text style={{fontSize: 18, marginTop: 16}}>Picket Width</Text>
-          <Picker
-            style={{alignSelf: 'stretch'}}
-            selectedValue={selectedPicketWidth}
-            onValueChange={item => {
-              setSelectedPicketWidth(item);
-            }}>
-            {picketWidth.map(item => (
-              <Picker.Item label={item} value={item} key={item} />
-            ))}
-          </Picker>
+          <DropDownPicker
+            style={{marginVertical: 32}}
+            open={openPicketWidth}
+            value={selectedPicketWidth}
+            items={picketWidth.map(item => ({label: item, value: item}))}
+            setOpen={setOpenPicketWidth}
+            setValue={setSelectedPicketWidth}
+          />
           <View style={styles.priceArea}>
             <Text style={styles.priceChars}>Width:</Text>
             <TouchableOpacity
@@ -171,16 +169,14 @@ const QuoteScreen = () => {
             </TouchableOpacity>
           </View>
           <Text style={{fontSize: 18, marginTop: 16}}>Lumber Type</Text>
-          <Picker
-            style={{alignSelf: 'stretch'}}
-            selectedValue={selectedLumberType}
-            onValueChange={item => {
-              setSelectedLumberType(item);
-            }}>
-            {lumberType.map(item => (
-              <Picker.Item label={item} value={item} key={item} />
-            ))}
-          </Picker>
+          <DropDownPicker
+            style={{marginVertical: 32}}
+            open={openLumberType}
+            value={selectedLumberType}
+            items={lumberType.map(item => ({label: item, value: item}))}
+            setOpen={setOpenLumberType}
+            setValue={setSelectedLumberType}
+          />
           <View style={styles.priceArea}>
             <Text style={styles.priceChars}>Type:</Text>
             <TouchableOpacity
@@ -192,16 +188,14 @@ const QuoteScreen = () => {
             </TouchableOpacity>
           </View>
           <Text style={{fontSize: 18, marginTop: 16}}>Post Type</Text>
-          <Picker
-            style={{alignSelf: 'stretch'}}
-            selectedValue={selectedPostType}
-            onValueChange={item => {
-              setSelectedPostType(item);
-            }}>
-            {postType.map(item => (
-              <Picker.Item label={item} value={item} key={item} />
-            ))}
-          </Picker>
+          <DropDownPicker
+            style={{marginVertical: 32}}
+            open={openPostType}
+            value={selectedPostType}
+            items={postType.map(item => ({label: item, value: item}))}
+            setOpen={setOpenPostType}
+            setValue={setSelectedPostType}
+          />
           <View style={styles.priceArea}>
             <Text style={styles.priceChars}>Type:</Text>
             <TouchableOpacity
