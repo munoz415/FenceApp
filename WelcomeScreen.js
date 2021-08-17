@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
+import {backgroundColor, mainColor, textColor} from './colors.js';
 
 const WelcomeScreen = ({navigation}) => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -32,7 +33,9 @@ const WelcomeScreen = ({navigation}) => {
       <ScrollView contentInsetAdjustmentBehavior="automatic">
         <View style={styles.welcomeScreen}>
           <Text style={styles.title}>Total Fence</Text>
-          <Text style={{marginTop: 16}}>Select an Option</Text>
+          <Text style={{marginTop: 16, color: '#293e3c'}}>
+            Select an Option
+          </Text>
           <TouchableOpacity style={styles.button} onPress={quoteButtonPressed}>
             <View>
               <Text style={styles.buttonText}>Get a Quote</Text>
@@ -72,11 +75,11 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   container: {
-    backgroundColor: '#5a5b5e',
+    backgroundColor: backgroundColor,
     flex: 1,
   },
   title: {
-    color: '#cfab1f',
+    color: mainColor,
     fontSize: 30,
   },
   button: {
@@ -85,11 +88,12 @@ const styles = StyleSheet.create({
     marginTop: 16,
     marginHorizontal: 16,
     borderWidth: 1,
-    borderColor: '#000',
+    borderColor: textColor,
     borderRadius: 10,
   },
   buttonText: {
     marginVertical: 8,
+    color: textColor,
   },
 });
 

@@ -13,6 +13,7 @@ import {
 import {Picker} from '@react-native-picker/picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import DropDownPicker from 'react-native-dropdown-picker';
+import {backgroundColor, mainColor, textColor} from './colors.js';
 
 const fenceSides = ['Left', 'Back', 'Right', 'Front Right', 'Front Left'];
 const numOfGates = ['1 Gate', '2 Gates', '3 Gates'];
@@ -63,10 +64,19 @@ const QuoteScreen = () => {
       <ScrollView contentInsetAdjustmentBehavior="automatic">
         <View
           style={{alignSelf: 'stretch', alignItems: 'center', marginTop: 16}}>
-          <Text style={{fontSize: 18}}>Select Attributes</Text>
-          <Text style={{fontSize: 18, marginTop: 16}}>Side Lengths</Text>
+          <Text style={{fontSize: 18, color: mainColor}}>
+            Select Attributes
+          </Text>
+          <Text style={{fontSize: 18, marginTop: 16, color: textColor}}>
+            Side Lengths
+          </Text>
           <DropDownPicker
-            style={{marginVertical: 32}}
+            style={{
+              marginVertical: 32,
+              backgroundColor: backgroundColor,
+              borderColor: textColor,
+            }}
+            textStyle={{color: textColor}}
             open={openFenceSides}
             value={selectedFenceSide}
             items={fenceSides.map(item => ({label: item, value: item}))}
@@ -81,7 +91,7 @@ const QuoteScreen = () => {
               placeholder={'Fence Side Length'}
               onChangeText={onChangeFenceSideLength}
             />
-            <Text>ft.</Text>
+            <Text style={{color: textColor}}>ft.</Text>
             <TouchableOpacity
               style={styles.fenceButton}
               onPress={() => save('fenceSideLength', fenceSideLength)}>
@@ -90,9 +100,16 @@ const QuoteScreen = () => {
               </View>
             </TouchableOpacity>
           </View>
-          <Text style={{fontSize: 18, marginTop: 16}}>Number of Gates</Text>
+          <Text style={{fontSize: 18, marginTop: 70, color: textColor}}>
+            Number of Gates
+          </Text>
           <DropDownPicker
-            style={{marginVertical: 32}}
+            style={{
+              marginVertical: 32,
+              backgroundColor: backgroundColor,
+              borderColor: textColor,
+            }}
+            textStyle={{color: textColor}}
             open={openGateNums}
             value={selectedGateNum}
             items={numOfGates.map(item => ({label: item, value: item}))}
@@ -109,9 +126,16 @@ const QuoteScreen = () => {
               </View>
             </TouchableOpacity>
           </View>
-          <Text style={{fontSize: 18, marginTop: 16}}>Number of Stringers</Text>
+          <Text style={{fontSize: 18, marginTop: 16, color: textColor}}>
+            Number of Stringers
+          </Text>
           <DropDownPicker
-            style={{marginVertical: 32}}
+            style={{
+              marginVertical: 32,
+              backgroundColor: backgroundColor,
+              borderColor: textColor,
+            }}
+            textStyle={{color: textColor}}
             open={openStringerNums}
             value={selectedStringerNums}
             items={numOfStringers.map(item => ({label: item, value: item}))}
@@ -130,9 +154,16 @@ const QuoteScreen = () => {
               </View>
             </TouchableOpacity>
           </View>
-          <Text style={{fontSize: 18, marginTop: 16}}>Fence Height</Text>
+          <Text style={{fontSize: 18, marginTop: 16, color: textColor}}>
+            Fence Height
+          </Text>
           <DropDownPicker
-            style={{marginVertical: 32}}
+            style={{
+              marginVertical: 32,
+              backgroundColor: backgroundColor,
+              borderColor: textColor,
+            }}
+            textStyle={{color: textColor}}
             open={openFenceHeight}
             value={selectedFenceHeight}
             items={fenceHeight.map(item => ({label: item, value: item}))}
@@ -149,9 +180,16 @@ const QuoteScreen = () => {
               </View>
             </TouchableOpacity>
           </View>
-          <Text style={{fontSize: 18, marginTop: 16}}>Picket Width</Text>
+          <Text style={{fontSize: 18, marginTop: 16, color: textColor}}>
+            Picket Width
+          </Text>
           <DropDownPicker
-            style={{marginVertical: 32}}
+            style={{
+              marginVertical: 32,
+              backgroundColor: backgroundColor,
+              borderColor: textColor,
+            }}
+            textStyle={{color: textColor}}
             open={openPicketWidth}
             value={selectedPicketWidth}
             items={picketWidth.map(item => ({label: item, value: item}))}
@@ -168,9 +206,16 @@ const QuoteScreen = () => {
               </View>
             </TouchableOpacity>
           </View>
-          <Text style={{fontSize: 18, marginTop: 16}}>Lumber Type</Text>
+          <Text style={{fontSize: 18, marginTop: 16, color: textColor}}>
+            Lumber Type
+          </Text>
           <DropDownPicker
-            style={{marginVertical: 32}}
+            style={{
+              marginVertical: 32,
+              backgroundColor: backgroundColor,
+              borderColor: textColor,
+            }}
+            textStyle={{color: textColor}}
             open={openLumberType}
             value={selectedLumberType}
             items={lumberType.map(item => ({label: item, value: item}))}
@@ -187,9 +232,16 @@ const QuoteScreen = () => {
               </View>
             </TouchableOpacity>
           </View>
-          <Text style={{fontSize: 18, marginTop: 16}}>Post Type</Text>
+          <Text style={{fontSize: 18, marginTop: 16, color: textColor}}>
+            Post Type
+          </Text>
           <DropDownPicker
-            style={{marginVertical: 32}}
+            style={{
+              marginVertical: 32,
+              backgroundColor: backgroundColor,
+              borderColor: textColor,
+            }}
+            textStyle={{color: textColor}}
             open={openPostType}
             value={selectedPostType}
             items={postType.map(item => ({label: item, value: item}))}
@@ -218,7 +270,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
   },
   container: {
-    backgroundColor: '#5a5b5e',
+    backgroundColor: backgroundColor,
     flex: 1,
   },
   priceArea: {
@@ -230,13 +282,14 @@ const styles = StyleSheet.create({
   priceChars: {
     fontSize: 18,
     marginRight: 16,
+    color: textColor,
   },
   button: {
     alignSelf: 'flex-start',
     paddingHorizontal: 16,
     marginHorizontal: 12,
     borderWidth: 1,
-    borderColor: '#000',
+    borderColor: textColor,
     borderRadius: 10,
     marginVertical: 16,
   },
@@ -245,7 +298,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     marginHorizontal: 10,
     borderWidth: 1,
-    borderColor: '#000',
+    borderColor: textColor,
     borderRadius: 10,
   },
   textInput: {
@@ -253,6 +306,9 @@ const styles = StyleSheet.create({
     marginRight: 10,
     paddingHorizontal: 4,
     paddingVertical: 0.8,
+  },
+  buttonText: {
+    color: textColor,
   },
 });
 

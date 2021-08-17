@@ -41,7 +41,11 @@ const App = () => {
                 color="#fff">
                 <Image
                   source={require('./assets/settingsgear.png')}
-                  style={{height: 22, width: 22, marginRight: 16}}
+                  style={{
+                    height: 22,
+                    width: 22,
+                    marginRight: 16,
+                  }}
                 />
               </TouchableOpacity>
             ),
